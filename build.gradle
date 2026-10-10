@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '2.0.0'
+    id 'org.jetbrains.kotlin.plugin.compose' version '2.0.0'
+    id 'org.jetbrains.compose' version '1.6.10'
+}
+
+group = 'com.roman.uppokertracker'
+version = '0.1.0'
+
+repositories {
+    mavenCentral()
+    google()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation compose.desktop.currentOs
+
+    implementation "org.hibernate.orm:hibernate-core:6.5.2.Final"
+    implementation "org.postgresql:postgresql:42.7.3"
+    implementation "org.xerial:sqlite-jdbc:3.45.1.0"
+    implementation "org.slf4j:slf4j-simple:2.0.12"
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+compose {
+    desktop {
+        application {
+            mainClass = "MainKt"
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
